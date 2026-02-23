@@ -1,0 +1,16 @@
+name: Implementing Metadata context Variables
+
+on: workflow_dispatch
+
+env:
+  cloud: google-cloud
+
+jobs:
+  test_context_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Fetch and Use metadata context variable"
+        run: |
+          echo "Repository name: ${{github.repository}}"
+          echo "Workflow name  : ${{github.workflow}}
+          echo "Trigerred by   : ${{github.triggering_actor}}
