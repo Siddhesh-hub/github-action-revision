@@ -15,7 +15,7 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hi visitor, this is created on Monday"
-        run: echo "$Greeting $First_Name is using #cloud!"
+        run: echo "$Greeting $First_Name is using $cloud!"
         # Step scoped variable
         env:
           First_Name: Vishal
