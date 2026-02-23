@@ -1,0 +1,32 @@
+name: Implement user input variable
+
+# Controls when the action will run, workflow runs when manually trigerred using the UI or API.
+on:
+ workflow_dispatch:
+   # Provide the input vars
+   inputs:
+     number1:
+       # Custom description to be shown and provided by user.
+       description: 'First Number'
+       # Default value if no value is explicitly provided.
+       default: '0'
+       # Input has to be provided for the workflow to run.
+       required: true
+     number2:
+       description: 'second number'
+       default: '0'
+       required: true
+
+jobs:
+  add_numbers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add numbers
+        id: sum
+        run: echo "::set-output name=sum::$((${{ inputs.number1 }} + ${{ inputs.number2}}))"
+
+      - name: Display sum
+        run: echo "The sum of ${{ inputs.number1 }} and ${{ inputs.number2 }} is ${{ steps.sum.outputs.sum }}"
+
+  
